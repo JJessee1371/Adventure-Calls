@@ -1,0 +1,27 @@
+{
+  "name": "adventure-calls",
+  "version": "1.0.0",
+  "description": "Explore the national parks of the USA",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JJessee1371/Adventure-Calls.git"
+  },
+  "author": "Jon Jessee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JJessee1371/Adventure-Calls/issues"
+  },
+  "homepage": "https://github.com/JJessee1371/Adventure-Calls#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "nodemailer": "^6.4.15",
+    "nodemon": "^2.0.6"
+  }
+}

@@ -9,7 +9,7 @@ const card4 = $('#card4');
 //====================================
 
 //Event listener for the searchbar
-const searchBar = document.getElementById('search');
+const searchBar = $('#search');
 const formBtn = document.getElementById('btn1');
 formBtn.addEventListener('click', (e) => {
     let stateCode = searchBar.value.toUpperCase();
@@ -77,7 +77,7 @@ $("button").on("click", function(event) {
     var APIkey = "8ee94bd2-5afc-4e57-825a-4e87cde01a7e";
     var city = $("#city").val();
     var state = $("#state").val();
-    var queryURLAir = "https://api.airvisual.com/v2/city?city=" + city + "&state=" + state + "&country=USA&key=" + APIkey;
+    var queryURLAir = `https://api.airvisual.com/v2/city?city=${city}&state=${state}&country=USA&key=${APIkey}`;
 
     $.ajax({
         url: queryURLAir,
@@ -131,7 +131,7 @@ $('.carousel').carousel();
 let parkCode = localStorage.getItem('code');
 
 //Creates general info for the cards, full activity list, and entrance fees collection
-let queryURLpark = 'https://developer.nps.gov/api/v1/parks?parkCode=' + parkCode + '&stateCode=&limit=5&sort=&api_key=CIOegTmdfiM4Yf3b17p4OpcSRxRf0G6lZ4pgTuOv';
+let queryURLpark = `https://developer.nps.gov/api/v1/parks?parkCode=${parkCode}&stateCode=&limit=5&sort=&api_key=CIOegTmdfiM4Yf3b17p4OpcSRxRf0G6lZ4pgTuOv`;
 $.ajax({
     url: queryURLpark,
     method: 'GET'
@@ -144,7 +144,7 @@ $.ajax({
     let lat = response2.data[0].latitude;
     let lng = response2.data[0].longitude;
     let date = moment().format('YYYY-MM-DD');
-    let queryURLSunrise = 'https://api.sunrise-sunset.org/json?lat=' + lat + '&lng=' + lng + '&date=' + date;
+    let queryURLSunrise = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}&date=${date}`;
     $.ajax({
         url: queryURLSunrise,
         method: 'GET'
@@ -157,17 +157,17 @@ $.ajax({
     });
 
     //Generate info for park contacts card
-    $('#phone').text('Phone:' + ' ' + response2.data[0].contacts.phoneNumbers[0].phoneNumber + ' ' + 'Ext.' + ' ' + response2.data[0].contacts.phoneNumbers[0].extension);
-    $('#email').text('Email:' + ' ' + response2.data[0].contacts.emailAddresses[0].emailAddress);
+    $('#phone').text(`Phone: ${response2.data[0].contacts.phoneNumbers[0].phoneNumber} Ext. ${response2.data[0].contacts.phoneNumbers[0].extension}`);
+    $('#email').text(`Email: ${response2.data[0].contacts.emailAddresses[0].emailAddress}`);
     $('#address1').text(
-        'Mailing address: ' + response2.data[0].addresses[0].line1 + ' ' +
-        response2.data[0].addresses[0].city + ' ' +
-        response2.data[0].addresses[0].stateCode
+        `Mailing address: ${response2.data[0].addresses[0].line1}
+        ${response2.data[0].addresses[0].city}
+        ${response2.data[0].addresses[0].stateCode}`
     );
     $('#address2').text(
-        'Physical address: ' + response2.data[0].addresses[1].line1 + ' ' +
-        response2.data[0].addresses[1].city + ' ' +
-        response2.data[0].addresses[1].stateCode
+        `Physical address: ${response2.data[0].addresses[1].line1}
+        ${response2.data[0].addresses[1].city}
+        ${response2.data[0].addresses[1].stateCode}`
     );
 
     //Generate info for park general info card
@@ -193,7 +193,7 @@ $.ajax({
 });
 
 //This ajax call will create activity suggestions for the user alongside the full activity list
-let queryActive = 'https://developer.nps.gov/api/v1/thingstodo?parkCode=' + parkCode + '&limit=3&api_key=CIOegTmdfiM4Yf3b17p4OpcSRxRf0G6lZ4pgTuOv';
+let queryActive = `https://developer.nps.gov/api/v1/thingstodo?parkCode=${parkCode}&limit=3&api_key=CIOegTmdfiM4Yf3b17p4OpcSRxRf0G6lZ4pgTuOv`;
 $.ajax({
     url: queryActive,
     method: 'GET'
