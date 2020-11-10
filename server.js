@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 //Set handlebars as viewing engine
-app.engine('handlebars', expbhs({ defaultLayout: 'main '}));
+app.engine('handlebars', expbhs({ defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 //Middleware for data parsing
@@ -17,3 +17,8 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use(routes);
+
+//Server listening for activity
+app.listen(PORT, () => {
+    console.log(`App listening on port ${PORT}`);
+});

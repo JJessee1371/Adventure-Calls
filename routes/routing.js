@@ -10,3 +10,9 @@ router.get('/', (req, res) => {
 router.get('/action', (req, res) => {
     res.render('action');
 });
+
+router.get('/weather', (req, res) => {
+    res.render('weather');
+});
+
+module.exports = router;

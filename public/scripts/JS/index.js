@@ -1,3 +1,13 @@
+//Materialize sidenav script
+$(document).ready(function () {
+    $('.sidenav').sidenav();
+});
+    
+//Materialize carousel script
+$(document).ready(function () {
+$('.carousel').carousel();
+});
+
 //Variable Definitions
 const card1 = $('#card1');
 const card2 = $('#card2');
@@ -10,17 +20,20 @@ const card4 = $('#card4');
 
 //Event listener for the searchbar
 const searchBar = $('#search');
-const formBtn = document.getElementById('btn1');
-formBtn.addEventListener('click', (e) => {
-    let stateCode = searchBar.value.toUpperCase();
+const formBtn = $('#searchbtn');
+formBtn.on('click', (e) => {
+    let stateCode = searchBar.val().toUpperCase();
     if(stateCode.length > 3 || stateCode.length < 2 || isNaN(stateCode) === false) {
-        $('div.verify').text('Please enter a valid state code! e.g. NY, CA, FL').attr('class', 'error');
+        $('.verify').text('Please enter a valid state code! e.g. NY, CA, FL').attr('class', 'error');
     } 
     else {
     getInfo(stateCode);
     $('div.verify').empty();
+    searchBar.empty();
     };
 });
+
+
     
 
 //National Park Service Ajax call. Function is attached to searchbar event listener
@@ -102,27 +115,18 @@ $("button").on("click", function(event) {
 $('.card').on('click', ".cardBtn", function(event) {
     let parkCode = event.currentTarget.dataset.parkcode;
     localStorage.setItem('code', parkCode);
-    window.location.href="act.html";
+    window.location.href="/action";
 });
 
 
 // Footer and leaving comments
-let commentBox = document.getElementById('comments');
-$('#buttonTwo').on("click",function(event){
-    localStorage.setItem("comment box", commentBox.value);
+let commentBox = $('#comments');
+$('#commentbtn').on("click",function(event) {
+    //Insert nodemailer functionality here
 });
 
 
-//Transferring to new location
-//Sidenav script
-$(document).ready(function () {
-$('.sidenav').sidenav();
-});
 
-//Carousel script
-$(document).ready(function () {
-$('.carousel').carousel();
-});
 
 
 //Page 2 JS 

@@ -2,9 +2,12 @@
 =======================*/
 body {
     /* background-image: linear-gradient(#e8f5e9, #c8e6c9, #a5d6a7); */
-    background-image: url('../Images/AC-bg.jpg');
+    background-image: url('/Images/AC-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 /* Page header styles 
@@ -56,6 +59,12 @@ header {
 
 .safety {
     font-size: 1.5em;
+}
+
+.searchNav {
+    margin: auto;
+    width: 75%;
+    border-radius: 25px;
 }
 
 /* Air quality section styles
