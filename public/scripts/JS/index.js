@@ -38,44 +38,51 @@ formBtn.on('click', (e) => {
 
 //National Park Service Ajax call. Function is attached to searchbar event listener
 function getInfo(stateCode) {
-    let queryURLNPS = `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&limit=5&api_key=CIOegTmdfiM4Yf3b17p4OpcSRxRf0G6lZ4pgTuOv`;
+    let queryURLNPS = `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&limit=15&api_key=CIOegTmdfiM4Yf3b17p4OpcSRxRf0G6lZ4pgTuOv`;
     $.ajax({
         url: queryURLNPS,
         method: 'GET'
-    }).then(function(response1) {
-        
-        //cardID array references items in HTML to append cards to
-        cardID = [card1, card2, card3, card4];
-        //imageID array creates a unique ID for each image on the cards
-        imageID = ['cardimg1', 'cardimg2', 'cardimg3', 'cardimg4'];
-        //parkID gives each park name span a unique ID
-        parkID = ['parkName1', 'parkName2', 'parkName3', 'parkName4'];
-        //infoID gives each information section a unqiue ID
-        infoID = ['info1', 'info2', 'info3', 'info4'];
-        //fetchData attributes determines where info is pulled from the NPS API object
-        fetchData = [response1.data[0], response1.data[1], response1.data[2], response1.data[3]];
+    }).then((response1) => {
+        console.log(response1);
 
-        //Empty content so new items can be placed
+        //New Code selecting random parks to display from the data response
+        let randomSelec = [];
+        for(i = 0; i < 4; i++) {
+            let park = response1.data[Math.floor(Math.random() * response1.data.length)];
+            randomSelec.push(park);
+        };
+
+        //Arrays for creating unique identifiers for each of the generated cards
+        cardID = [card1, card2, card3, card4];
+        imageID = ['cardimg1', 'cardimg2', 'cardimg3', 'cardimg4'];
+        parkID = ['parkName1', 'parkName2', 'parkName3', 'parkName4'];
+        infoID = ['info1', 'info2', 'info3', 'info4'];
+        fetchData = [randomSelec[0], randomSelec[1], randomSelec[2], randomSelec[3]];
+
+        //Empty previous content so new search is rendered 
         card1.empty().addClass('green darken-2').css('color', 'white');
         card2.empty().addClass('green darken-2').css('color', 'white');
         card3.empty().addClass('green darken-2').css('color', 'white');
         card4.empty().addClass('green darken-2').css('color', 'white');
 
-        //Loop to dynamically generate multiple cards
+        //Loop to dynamically generate multiple cards with unique characteristics 
         for (i = 0; i < cardID.length; i++) {
-        //Appends to the div class=card Section 1
+        //Section 1 - Image data and card title are retrieved from NPS API
         let imgDiv = $('<div>').attr('class', 'card-image');
         let newImg = $('<img>').attr('id', imageID[i]).attr('src', fetchData[i].images[0].url).attr('alt', fetchData[i].images[0].altText);
-        let newSpan = $('<span>').attr('id', parkID[i]).attr('class', 'card-title').text(fetchData[i].fullName);
-        //Section 2
+        let cardTitle = $('<span>').attr('id', parkID[i]).attr('class', 'card-title').text(fetchData[i].fullName);
+
+        //Section 2 - Park descriptions is pulled from NPS API
         let cardDiv = $('<div>').attr('class', 'card-content');
-        let para = $('<p>').attr('id', infoID[i]).text(fetchData[i].description);
-        //Section 3
+        let description = $('<p>').attr('id', infoID[i]).text(fetchData[i].description);
+
+        //Section 3 - Button is generated with data attr linking to more info on specific park
         let actionDiv = $('<div>').attr('class', 'card-action');
         let infoBtn = $('<button>').attr('class', 'waves-effect waves-light btn teal darken-4 cardBtn').attr('data-parkCode', fetchData[i].parkCode).text('Get more info!');
+
         //Append contents to div for each section
-        let section1 = imgDiv.append(newImg).append(newSpan);
-        let section2 = cardDiv.append(para);
+        let section1 = imgDiv.append(newImg).append(cardTitle);
+        let section2 = cardDiv.append(description);
         let section3 = actionDiv.append(infoBtn);
         //Append sections to the cards in the HTML
         cardID[i].append(section1).append(section2).append(section3);
