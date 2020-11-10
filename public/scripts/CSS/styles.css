@@ -1,7 +1,10 @@
 /* index.html styles 
 =======================*/
 body {
-    background-image: linear-gradient(#e8f5e9, #c8e6c9, #a5d6a7);
+    /* background-image: linear-gradient(#e8f5e9, #c8e6c9, #a5d6a7); */
+    background-image: url('../Images/AC-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* Page header styles 

@@ -108,3 +108,15 @@ let commentBox = document.getElementById('comments');
 $('#buttonTwo').on("click",function(event){
     localStorage.setItem("comment box", commentBox.value);
 });
+
+
+//Transferring to new location
+//Sidenav script
+$(document).ready(function () {
+$('.sidenav').sidenav();
+});
+
+//Carousel script
+$(document).ready(function () {
+$('.carousel').carousel();
+});

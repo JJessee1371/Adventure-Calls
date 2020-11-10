@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Import Google Icon Font - Materialize CSS-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Favicon link -->
+    <link rel="icon" href="Images/favicon-16x16.png">
+    <!-- Google Fonts link -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap">
+    <!-- External CSS stylesheet -->
+    <link rel="stylesheet" href="/scripts/CSS/styles.css">
+    <title>Adventure Calls</title>
+</head>
+<body>
+    <!-- Header and nav bar -->
+    <header class="green darken-4">NPAG - Your journey starts here</header>
+    <nav>
+        <div class="nav-wrapper green darken-4">
+        <img class="brand-logo" src="Images/nature-logo.png" alt="Logo depicting mountain peaks with sun over the top" height="75" width="75">
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="https://www.nps.gov/index.htm">National Park Service</a></li>
+            <li><a href="index.html">Home</a></li>
+        </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="https://www.nps.gov/index.htm">National Park Service</a></li>
+        <li><a href="index.html">Home</a></li>
+    </ul>
+
+    {{{ body }}}
+
+    <!-- Footer and comments box -->
+    <footer class="page-footer green green darken-2">
+        <div class="container">
+        <div class="row">
+            <div id= "footer" class="col s12 m12 l12 xl12">
+            <h5 class="white-text">Review Our Website</h5>
+            <p class="grey-text text-lighten-4">
+                <textarea id="comments" class="textarea" placeholder="Leave Your Comments Here"></textarea>
+            </p>
+            <button id="buttonTwo" class="btn waves-effect waves-light btn-small" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+            </div>
+        </div>
+        </div>
+        <div class="footer-copyright">
+        <div class="container">
+        National Park Adventure Generator
+        </div>
+        </div>
+    </footer>
+
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+crossorigin="anonymous"></script>
+<!-- Materialize JS link -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- Moment.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<!-- External JS -->
+<script src="/scripts/JS/index.js"></script>
+</body>
+</html>
